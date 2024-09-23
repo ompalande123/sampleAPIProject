@@ -11,42 +11,38 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 
 public class ExtentManager {
 
-	// Extent report code starts
 	private ExtentSparkReporter sparkReporter;
 	private ExtentReports extent;
 	private ExtentTest test;
 
 	// constructor
-	public ExtentManager()
-	{
-		// to append date and time at the end of the report
-		String timestamp=new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-		
-		
-		sparkReporter=new ExtentSparkReporter(System.getProperty("user.dir")+"\\extentReports\\extentReport_"+timestamp+".html");
+	public ExtentManager() {
+
+		// to append date and time with milli seconds at the end of the report
+		String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmssSSS").format(new Date());
+
+		sparkReporter = new ExtentSparkReporter(
+				System.getProperty("user.dir") + "\\extentReports\\extentReport_" + timestamp + ".html");
 		sparkReporter.config().setDocumentTitle("Automation Report");
 		sparkReporter.config().setReportName("API testing");
 		sparkReporter.config().setTheme(Theme.STANDARD);
-		
-		extent=new ExtentReports();
+
+		extent = new ExtentReports();
 		extent.attachReporter(sparkReporter);
+
 	}
-	
-	
-	//methods
-	public void extentCreateTest(String extenttestName)
-	{
-		test=extent.createTest(extenttestName);
-		
+
+	// methods
+	public void extentCreateTest(String extenttestName) {
+		test = extent.createTest(extenttestName);
+
 	}
-	
-	public void extentTestLog(Status st, String details )
-	{
-		test.log(st,details);
+
+	public void extentTestLog(Status st, String details) {
+		test.log(st, details);
 	}
-	
-	public void extentFlush()
-	{
+
+	public synchronized void extentFlush() {
 		extent.flush();
 	}
 

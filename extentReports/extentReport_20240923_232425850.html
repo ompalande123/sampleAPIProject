@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">API testing</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Sep 23, 2024 09:27:19 am</span></a>
+<a href="#"><span class="badge badge-primary">Sep 23, 2024 11:24:25 pm</span></a>
 </li>
 </ul>
 </div>
@@ -74,14 +74,14 @@
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
-        <li class="test-item"  status="fail" test-id="1"
+        <li class="test-item"  status="fail" test-id="2"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">Get Request:: Validate response</p>
+            <p class="name">Get Request::</p>
             <p class="text-sm">
-              <span>9:27:22 am</span> / <span>00:00:00:013</span>
+              <span>11:24:25 pm</span> / <span>00:00:00:152</span>
               <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
@@ -89,11 +89,11 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-fail">Get Request:: Validate response</h5>
-<span class='badge badge-success'>09.23.2024 9:27:22 am</span>
-<span class='badge badge-danger'>09.23.2024 9:27:22 am</span>
-<span class='badge badge-default'>00:00:00:013</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<h5 class="test-status text-fail">Get Request::</h5>
+<span class='badge badge-success'>09.23.2024 11:24:25 pm</span>
+<span class='badge badge-danger'>09.23.2024 11:24:26 pm</span>
+<span class='badge badge-default'>00:00:00:152</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
 <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
@@ -104,24 +104,24 @@
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log fail-bg">Fail</span></td>
-        <td>9:27:22 am</td>
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>11:24:25 pm</td>
         <td>
-          last_name not matched : <br> <p> Actual value = Lawson<br> Expected value = Funke</p>
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log fail-bg">Fail</span></td>
-        <td>9:27:22 am</td>
-        <td>
-          last_name not matched : <br> <p> Actual value = Ferguson<br> Expected value = Funke</p>
+          Response body : <br>{"data":{"id":2,"email":"janet.weaver@reqres.in","first_name":"Janet","last_name":"Weaver","avatar":"https://reqres.in/img/faces/2-image.jpg"},"support":{"url":"https://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>9:27:22 am</td>
+        <td>11:24:25 pm</td>
         <td>
-          last_name matched : <br> <p> Actual value = Funke<br> Expected value = Funke</p>
+          <b>200HTTP/1.1 200 OK<b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>11:24:26 pm</td>
+        <td>
+          first_name not matched : <br> <p> Actual value = Janet<br> Expected value = Janet123</p>
         </td>
       </tr>
   </tbody>
@@ -143,13 +143,13 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Sep 23, 2024 09:27:19 am</h3>
+<h3>Sep 23, 2024 11:24:25 pm</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Sep 23, 2024 09:27:22 am</h3>
+<h3>Sep 23, 2024 11:24:26 pm</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -200,9 +200,9 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='33%'><b>1</b> events passed</small></div>
+<div><small data-tooltip='66%'><b>2</b> events passed</small></div>
 <div>
-<small data-tooltip='66%'><b>2</b> events failed,
+<small data-tooltip='33%'><b>1</b> events failed,
 <b data-tooltip='%'>0</b> others
 </small>
 </div>
@@ -219,7 +219,7 @@
 </div></div>
 <script>
 var timeline = {
-"Get Request:: Validate response":0.013
+"Get Request::":0.152
 };
 </script>
 <div class="row">
@@ -245,8 +245,8 @@ warningGrandChild: 0,
 skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
-passEvents: 1,
-failEvents: 2,
+passEvents: 2,
+failEvents: 1,
 warningEvents: 0,
 skipEvents: 0,
 infoEvents: 0

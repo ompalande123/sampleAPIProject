@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">API testing</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Sep 23, 2024 09:29:38 am</span></a>
+<a href="#"><span class="badge badge-primary">Sep 23, 2024 11:22:32 pm</span></a>
 </li>
 </ul>
 </div>
@@ -74,14 +74,14 @@
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
-        <li class="test-item"  status="pass" test-id="1"
+        <li class="test-item"  status="pass" test-id="4"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">Get Request:: Validate response</p>
+            <p class="name">Post request to create user ::: </p>
             <p class="text-sm">
-              <span>9:29:41 am</span> / <span>00:00:00:007</span>
+              <span>11:22:32 pm</span> / <span>00:00:00:432</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -89,11 +89,11 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">Get Request:: Validate response</h5>
-<span class='badge badge-success'>09.23.2024 9:29:41 am</span>
-<span class='badge badge-danger'>09.23.2024 9:29:41 am</span>
-<span class='badge badge-default'>00:00:00:007</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<h5 class="test-status text-pass">Post request to create user ::: </h5>
+<span class='badge badge-success'>09.23.2024 11:22:32 pm</span>
+<span class='badge badge-danger'>09.23.2024 11:22:33 pm</span>
+<span class='badge badge-default'>00:00:00:432</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=4</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
 <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
@@ -105,9 +105,16 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>9:29:41 am</td>
+        <td>11:22:33 pm</td>
         <td>
-          last_name matched : <br> <p> Actual value = Funke<br> Expected value = Funke</p>
+          {"name":"Harry Potter","job":"Magician","id":1011,"createdAt":"2024-09-23T17:52:33.009Z"}
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>11:22:33 pm</td>
+        <td>
+          <b>201HTTP/1.1 201 Created<b>
         </td>
       </tr>
   </tbody>
@@ -129,13 +136,13 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Sep 23, 2024 09:29:38 am</h3>
+<h3>Sep 23, 2024 11:22:32 pm</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Sep 23, 2024 09:29:41 am</h3>
+<h3>Sep 23, 2024 11:22:33 pm</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -186,7 +193,7 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>1</b> events passed</small></div>
+<div><small data-tooltip='100%'><b>2</b> events passed</small></div>
 <div>
 <small data-tooltip='0%'><b>0</b> events failed,
 <b data-tooltip='%'>0</b> others
@@ -205,7 +212,7 @@
 </div></div>
 <script>
 var timeline = {
-"Get Request:: Validate response":0.007
+"Post request to create user ::: ":0.432
 };
 </script>
 <div class="row">
@@ -231,7 +238,7 @@ warningGrandChild: 0,
 skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
-passEvents: 1,
+passEvents: 2,
 failEvents: 0,
 warningEvents: 0,
 skipEvents: 0,

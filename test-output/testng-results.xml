@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-09-23T09:29:36 IST" name="Default suite" finished-at="2024-09-23T09:29:42 IST" duration-ms="5335">
+  <suite started-at="2024-09-23T23:45:56 IST" name="Suite" finished-at="2024-09-23T23:46:23 IST" duration-ms="26340">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testRunner.TestRunner@183ec003]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2024-09-23T09:29:36 IST" name="Default test" finished-at="2024-09-23T09:29:42 IST" duration-ms="5335">
+    <test started-at="2024-09-23T23:45:56 IST" name="Test" finished-at="2024-09-23T23:46:23 IST" duration-ms="26340">
       <class name="testRunner.TestRunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:testRunner.TestRunner@183ec003]" started-at="2024-09-23T09:29:36 IST" name="setUpClass" finished-at="2024-09-23T09:29:37 IST" duration-ms="1026" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:testRunner.TestRunner@183ec003]" started-at="2024-09-23T23:45:56 IST" name="setUpClass" finished-at="2024-09-23T23:45:58 IST" duration-ms="1420" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@11d2714a]]>
+                <![CDATA[org.testng.TestRunner@73be4cdd]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testRunner.TestRunner@183ec003]" started-at="2024-09-23T09:29:37 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-23T09:29:41 IST" duration-ms="4155" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testRunner.TestRunner@183ec003]" started-at="2024-09-23T23:45:58 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-23T23:46:21 IST" duration-ms="22943" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["get all users and perform validation"]]>
+                <![CDATA["Verify user is able to create new user"]]>
               </value>
             </param>
             <param index="1">
@@ -37,11 +37,75 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:testRunner.TestRunner@183ec003]" started-at="2024-09-23T09:29:41 IST" name="tearDownClass" finished-at="2024-09-23T09:29:42 IST" duration-ms="56" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testRunner.TestRunner@183ec003]" started-at="2024-09-23T23:46:21 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-23T23:46:21 IST" duration-ms="426" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Verify user is able to get user data"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["User petstore API"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testRunner.TestRunner@183ec003]" started-at="2024-09-23T23:46:21 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-23T23:46:21 IST" duration-ms="340" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Verify user is able to get all users and perform validations on the repoonse"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["User petstore API"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testRunner.TestRunner@183ec003]" started-at="2024-09-23T23:46:21 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-23T23:46:22 IST" duration-ms="500" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Verify user is able to create multiple users"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["User petstore API"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testRunner.TestRunner@183ec003]" started-at="2024-09-23T23:46:22 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-23T23:46:22 IST" duration-ms="469" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Verify user is able to create multiple users"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["User petstore API"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:testRunner.TestRunner@183ec003]" started-at="2024-09-23T23:46:22 IST" name="tearDownClass" finished-at="2024-09-23T23:46:22 IST" duration-ms="117" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
       </class> <!-- testRunner.TestRunner -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>
