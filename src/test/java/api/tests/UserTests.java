@@ -41,31 +41,7 @@ public class UserTests {
 		Response response=UserEndpoints.createUser(userData);
 		response.then().log().all();
 		
-		extentManager.extentTestLog(Status.PASS, response.body().asString());
-		extentManager.extentTestLog(Status.PASS, "<b>"+String.valueOf(response.statusCode()+String.valueOf(response.statusLine())+"<b>"));
-		extentManager.extentFlush();
-		
-	}
-	
-	
-	
-	@And("user creates a post request")
-	public void user_creates_a_post_request()
-	{
-		
-		extentManager.extentCreateTest("POST request");
-		// to prepare body of the request
-		userData.setName("Ethan");
-		userData.setJob("Agent");
-		userData.setId(5001);
-		
-		// Pass the body to the createUser method from UserEndpoints and create response object to get the response
-		Response response=UserEndpoints.createUser(userData);
-		response.then().log().all();
-		
 		Assert.assertEquals(response.getStatusCode(), 201);
-		System.out.println(response.body().asString());
-		System.out.println("User Created successfully");
 		
 		
 		extentManager.extentTestLog(Status.PASS, response.body().asString());
@@ -73,6 +49,10 @@ public class UserTests {
 		extentManager.extentFlush();
 		
 	}
+	
+	
+	
+	
 	
 	
 	@And("user wants to get data for username {int}")
@@ -85,12 +65,17 @@ public class UserTests {
 		JSONObject jsonObject=new JSONObject(response.asString());
 		System.out.println("get Response is - "+jsonObject.toString());
 		String expectedFname=jsonObject.getJSONObject("data").get("first_name").toString();
-		String actualFname="Janet";
+		String actualFname="Janet1";
 		if(actualFname.equalsIgnoreCase(expectedFname))
 		{
-			System.out.println("First Name matched"+expectedFname);
+			extentManager.extentTestLog(Status.PASS, "first_name matched : <br> <p> Actual value = "+actualFname + "<br> Expected value = "
+					+expectedFname+"</p>");
 		}
-		
+		else
+		{
+			extentManager.extentTestLog(Status.FAIL, "first_name not matched : <br> <p> Actual value = "+actualFname + "<br> Expected value = "
+					+expectedFname+"</p>");
+		}
 		
 		extentManager.extentTestLog(Status.PASS, "Response body : <br>"+response.body().asString());
 		extentManager.extentTestLog(Status.PASS,"<b>"+String.valueOf(response.statusCode()+" "+String.valueOf(response.statusLine())+"<b>"));
@@ -114,16 +99,20 @@ public class UserTests {
 		JSONObject jsonObject=new JSONObject(res.asString());
 		System.out.println("get all users Response is - "+jsonObject.toString());
 		
-		
+		extentManager.extentCreateTest("Get Request:: Validate response");
 		String lastName="Funke";
 		for(int i=0;i<jsonObject.getJSONArray("data").length();i++)
 		{
 			if(jsonObject.getJSONArray("data").getJSONObject(i).get("last_name").toString().equalsIgnoreCase(lastName))
 			{
-				System.out.println("LAst name match found Funke");
+				extentManager.extentTestLog(Status.PASS, "last_name matched : <br> <p> Actual value = "+jsonObject.getJSONArray("data").getJSONObject(i).get("last_name").toString() + "<br> Expected value = "
+						+lastName+"</p>");
+				break;
 			}
+			
 		}
 		
+		extentManager.extentFlush();
 	}
 	
 	
