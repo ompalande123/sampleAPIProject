@@ -40,5 +40,19 @@ public class UserEndpoints {
 		return response;
 
 	}
+	
+	// PATCH request
+		public static Response patchUser(User userData) {
+			Response response = given().contentType(ContentType.JSON).accept(ContentType.JSON).body(userData)
+
+					.when().post(Routes.patch_exisitngUser);
+
+			return response;
+
+		}
+
+	
+	
+	
 
 }

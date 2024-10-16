@@ -1,117 +1,60 @@
 package api.utilities;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelUtils {
-
-	public FileInputStream fi;
-	public FileOutputStream fo;
-	public XSSFWorkbook workbook;
-	public XSSFSheet sheet;
-	public XSSFRow row;
-	public XSSFCell cell;
-	public CellStyle style;
-	String path;
 	
+	private static final String filePath=".//testData//myData.xlsx";
 	
-	//constructor
-	public ExcelUtils(String path)
+	public static Map<String, String> getTestData(String sheetName, String testID) throws IOException
 	{
-		this.path=path;
-	}
-	
-	
-	public int getRowCount(String sheetName) throws IOException
-	{
-		fi=new FileInputStream(path);
-		workbook=new XSSFWorkbook(fi);
-		sheet=workbook.getSheet(sheetName);
-		int rowCount=sheet.getLastRowNum();
-		workbook.close();
-		fi.close();
-		return rowCount;
-	}
-	
-	
-	public int getCellCount(String sheetName, int rownum) throws IOException
-	{
-		fi=new FileInputStream(path);
-		workbook=new XSSFWorkbook(fi);
-		sheet=workbook.getSheet(sheetName);
-		row=sheet.getRow(rownum);
-		int cellCount=row.getLastCellNum();
-		workbook.close();
-		fi.close();
-		return cellCount;
-	
-	
-	}
-	
-	
-	public String getCellData(String sheetName, int rownum, int colnum) throws IOException
-	{
-		fi=new FileInputStream(path);
-		workbook=new XSSFWorkbook(fi);
-		sheet=workbook.getSheet(sheetName);
-		row=sheet.getRow(rownum);
-		cell=row.getCell(colnum);
+		FileInputStream fis=new FileInputStream(filePath);
+		XSSFWorkbook workbook=new XSSFWorkbook(fis);
+		XSSFSheet sheet=workbook.getSheet(sheetName);
 		
-		DataFormatter formatter=new DataFormatter();
-		String data;
-		try {
-			data=formatter.formatCellValue(cell); //return cell value as String irrespective of cell data type
-		}
-		catch(Exception e)
+		Map<String, String> data=new HashMap<>();
+		
+		boolean testIDfound=false;
+		
+		for(Row row:sheet)
 		{
-			data="";
+			XSSFCell firstCell=(XSSFCell) row.getCell(0);
+			if(firstCell !=null && firstCell.getStringCellValue().equals(testID))
+			{
+				testIDfound=true;
+				for(Cell cell:row)
+				{
+					String header=sheet.getRow(0).getCell(cell.getColumnIndex()).getStringCellValue();
+					String value=cell.getStringCellValue();
+					data.put(header, value);
+				}
+				break;
+			}
 		}
 		workbook.close();
-		fi.close();
+		fis.close();
+		
+		if(!testIDfound)
+		{
+			throw new IllegalArgumentException("Test ID not found : "+testID);
+		}
+		
 		return data;
-	}
-	
-	
-	public void setCellData(String sheetName, int rownum, int colnum, String data) throws IOException
-	{
-		File file=new File(path);
-		if(!file.exists())
-		{
-			workbook=new XSSFWorkbook();
-			fo=new FileOutputStream(path);
-			workbook.write(fo);
-			
-			
-		}
 		
-		fi=new FileInputStream(path);
-		workbook=new XSSFWorkbook(fi);
-		if(workbook.getSheetIndex(sheetName)==-1)workbook.createSheet(sheetName);
-		sheet=workbook.getSheet(sheetName);
-		
-		if(sheet.getRow(rownum)==null)sheet.createRow(rownum);
-		row=sheet.getRow(rownum);
-		
-		cell=row.createCell(colnum);
-		cell.setCellValue(data);
-		fo=new FileOutputStream(path);
-		workbook.write(fo);
-		workbook.close();
-		fi.close();
-		fo.close();
 		
 		
 	}
 	
 	
 	
+
 }

@@ -1,5 +1,20 @@
-@API @Suite
+@Users @Suite
 Feature: User petstore API
+
+
+	@read_excel
+	Scenario: user wants to read excel data
+	Given user want to read excel
+
+
+	@read_user_from_testData
+  Scenario: Verify user is able to read data from excel test data sheet
+    Given user want to read test data from sheet "Create_Users" with ID "2"
+    #When user receives the successful response
+    Then user generating report
+	
+
+
 
   @create_user
   Scenario: Verify user is able to create new user
@@ -13,7 +28,16 @@ Feature: User petstore API
     When user receives the successful response
     Then user validates the response
     And user generating report
-
+    
+    
+  @update_user
+  Scenario: Verify user is able to update the existing user  
+		Given user creates a patch request with name "Tester" job "Automation"
+    When user receives the successful response
+    Then user generating report
+	
+	
+	
   @get_all_users
   Scenario: Verify user is able to get all users and perform validations on the repoonse
     Given user sends get request to retrieve all users from page number 2

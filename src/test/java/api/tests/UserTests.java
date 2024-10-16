@@ -1,5 +1,8 @@
 package api.tests;
 
+import java.io.IOException;
+import java.util.Map;
+
 import org.json.JSONObject;
 import org.testng.Assert;
 
@@ -7,6 +10,7 @@ import com.aventstack.extentreports.Status;
 
 import api.endpoints.User;
 import api.endpoints.UserEndpoints;
+import api.utilities.ExcelUtils;
 import api.utilities.ExtentManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -20,7 +24,20 @@ public class UserTests {
 	Response res = null;
 	ExtentManager extentManager = new ExtentManager(); // To access extent report features from utility class
 														// ExtentManager
-
+	Map<String, String> testData;
+	
+	@Given("user want to read test data from sheet {string} with ID {string}")
+	public void readDatafromExcel(String sheetName, String testDataID) throws IOException
+	{
+		testData=ExcelUtils.getTestData(sheetName, testDataID);
+//		Map<String, String> testData=ExcelUtils.getTestData(sheetName, testID);
+		System.out.println("Test data from my excel : "+testData);
+		String job=testData.get("Jobname").toString();
+		System.out.println("Job = "+job);
+		
+		
+	}
+		
 	@Given("^user creates a post request with name \"([^\"]*)\" job \"([^\"]*)\" and id \"([^\"]*)\"$")
 	public void user_creates_a_post_requestwithnamejobandid(String name, String job, int id) {
 		extentManager.extentCreateTest("Post request to create user ::: ");
@@ -33,6 +50,19 @@ public class UserTests {
 
 	}
 
+	
+	@Given("user creates a patch request with name {string} job {string}")
+	public void user_creates_a_patch_requestwithnamejobandid(String name, String job) {
+		extentManager.extentCreateTest("Patch request to update existing user ::: ");
+		userData.setName(name);
+		userData.setJob(job);
+//		userData.setId(id);
+
+		res = UserEndpoints.patchUser(userData);
+		res.then().log().all();
+
+	}
+	
 	@When("user receives the successful response")
 	public void user_receives_the_successful_response() {
 		int statusCode = res.statusCode();
