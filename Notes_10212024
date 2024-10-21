@@ -1,0 +1,17 @@
+*** What is Feature file? Why is it used?
+Feature file follows BDD approach (Behavior Driven Development) so that anyone in a team from technical/non-technical background can easily understand the test scenarios. (Business Team, DEV and Testing team)
+It provides clear communication for all stakeholders.
+It helps to maintain up-to-date documentation.
+It helps to understand the expected behavior of the system.
+
+We use Gherkin keywords such as Given, When, Then to write the scenarios.
+
+
+
+
+
+Which dependencies we need to add in pom.xml file?
+How to create a feature file?
+Different Gherkin keywords used in file?
+What are the tags in feature file? How and where we can use them?
+What are some good practices to write a feature file?
