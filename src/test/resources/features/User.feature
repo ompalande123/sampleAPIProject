@@ -2,17 +2,21 @@
 Feature: User petstore API
 
 
-	@read_excel
-	Scenario: user wants to read excel data
-	Given user want to read excel
+	
 
 
 	@read_user_from_testData
   Scenario: Verify user is able to read data from excel test data sheet
-    Given user want to read test data from sheet "Create_Users" with ID "2"
+    Given user wants to read test data from sheet "Create_Users" with ID "2"
     #When user receives the successful response
     Then user generating report
 	
+	@create_user_from_testData
+  Scenario: Verify user is able to post a request for user creation
+  	Given user wants to read test data from sheet "Create_Users" with ID "3"
+  	When user creates a post request for new user creation 
+    Then user receives the successful response
+    And user generating report
 
 
 

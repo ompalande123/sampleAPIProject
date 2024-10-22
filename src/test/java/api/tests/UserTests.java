@@ -26,18 +26,28 @@ public class UserTests {
 														// ExtentManager
 	Map<String, String> testData;
 	
-	@Given("user want to read test data from sheet {string} with ID {string}")
+	@Given("user wants to read test data from sheet {string} with ID {string}")
 	public void readDatafromExcel(String sheetName, String testDataID) throws IOException
 	{
 		testData=ExcelUtils.getTestData(sheetName, testDataID);
-//		Map<String, String> testData=ExcelUtils.getTestData(sheetName, testID);
-		System.out.println("Test data from my excel : "+testData);
-		String job=testData.get("Jobname").toString();
-		System.out.println("Job = "+job);
-		
 		
 	}
-		
+	
+	
+	@When("user creates a post request for new user creation")
+	public void userCreatesPostRequest()
+	{
+		extentManager.extentCreateTest("Post request to create user ::: ");
+		userData.setName(testData.get("Username").toString());
+		userData.setJob(testData.get("Jobname").toString());
+		userData.setId(Integer.valueOf(testData.get("UserID")));
+
+		res = UserEndpoints.createUser(userData);
+		res.then().log().all();
+	}
+	
+	
+	
 	@Given("^user creates a post request with name \"([^\"]*)\" job \"([^\"]*)\" and id \"([^\"]*)\"$")
 	public void user_creates_a_post_requestwithnamejobandid(String name, String job, int id) {
 		extentManager.extentCreateTest("Post request to create user ::: ");
