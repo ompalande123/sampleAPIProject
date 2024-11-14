@@ -12,10 +12,13 @@ import api.endpoints.User;
 import api.endpoints.UserEndpoints;
 import api.utilities.ExcelUtils;
 import api.utilities.ExtentManager;
+import dummyData.MyDummyData;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
 public class UserTests {
@@ -25,18 +28,64 @@ public class UserTests {
 	ExtentManager extentManager = new ExtentManager(); // To access extent report features from utility class
 														// ExtentManager
 	Map<String, String> testData;
-	
+
 	@Given("user wants to read test data from sheet {string} with ID {string}")
-	public void readDatafromExcel(String sheetName, String testDataID) throws IOException
-	{
-		testData=ExcelUtils.getTestData(sheetName, testDataID);
+	public void readDatafromExcel(String sheetName, String testDataID) throws IOException {
+		testData = ExcelUtils.getTestData(sheetName, testDataID);
+
+	}
+
+	
+	@Given("user wants to parse json data")
+	public void userwantstoparsejsondata() {
+		String captureResponse=MyDummyData.testComplexJSONResponseString();
+		System.out.println(captureResponse);
+		JsonPath jp=new JsonPath(captureResponse);
+		int id=jp.getInt("[0].id");
+		System.out.println("ID is: "+id);
+		String collection=jp.getString("[0].collection");
+		System.out.println("Collection of : "+collection);
+		
+		Boolean fav=jp.getBoolean("[0].\'favorite actor\'");
+		System.out.println("boolean value is : "+fav);
+		
+		//to get the list array
+		System.out.println("title is:: "+jp.getString("[0].List[0].title"));
+		System.out.println("VAlue is:: "+jp.getString("[0].List[0].'cast roles'[2]"));
+		
 		
 	}
 	
 	
+	
+	
+	@Given("user wants to read data")
+	public void user_wants_to_read_data(DataTable dataTable) {
+	    String myName=dataTable.cell(1, 0);
+	    System.out.println("Name is : "+myName);
+	    
+//	    | name       | age | gender | occupation | salary |
+//	      | Ethan Hunt |  28 | Male   | MI Agent   |  80000 |
+	    
+	    String age=dataTable.cell(1, 1);
+	    System.out.println("Age : "+age);
+	    
+	    
+	    
+	    
+	}
+	
+	
+	
+	@Given("user read {string} and {string} from sheet")
+	public void userretrivessomedata(String Username, String Jobname) {
+		System.out.println(testData.get(Username));
+		System.out.println(testData.get(Jobname));
+
+	}
+
 	@When("user creates a post request for new user creation")
-	public void userCreatesPostRequest()
-	{
+	public void userCreatesPostRequest() {
 		extentManager.extentCreateTest("Post request to create user ::: ");
 		userData.setName(testData.get("Username").toString());
 		userData.setJob(testData.get("Jobname").toString());
@@ -45,9 +94,7 @@ public class UserTests {
 		res = UserEndpoints.createUser(userData);
 		res.then().log().all();
 	}
-	
-	
-	
+
 	@Given("^user creates a post request with name \"([^\"]*)\" job \"([^\"]*)\" and id \"([^\"]*)\"$")
 	public void user_creates_a_post_requestwithnamejobandid(String name, String job, int id) {
 		extentManager.extentCreateTest("Post request to create user ::: ");
@@ -60,7 +107,6 @@ public class UserTests {
 
 	}
 
-	
 	@Given("user creates a patch request with name {string} job {string}")
 	public void user_creates_a_patch_requestwithnamejobandid(String name, String job) {
 		extentManager.extentCreateTest("Patch request to update existing user ::: ");
@@ -72,7 +118,7 @@ public class UserTests {
 		res.then().log().all();
 
 	}
-	
+
 	@When("user receives the successful response")
 	public void user_receives_the_successful_response() {
 		int statusCode = res.statusCode();
